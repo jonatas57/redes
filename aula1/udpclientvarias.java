@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-class UDPClient {
+class udpclientvarias {
 	public static void main(String args[]) throws Exception {
 		//Create datagram socket
 		DatagramSocket clientSocket = new DatagramSocket();

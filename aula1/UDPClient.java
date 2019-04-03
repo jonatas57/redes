@@ -20,7 +20,7 @@ class UDPClient {
 			//Get the bytes of the sentence
 			sendData = sentence.getBytes();
 			//Send packet to the server
-			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
+			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9877);
 			clientSocket.send(sendPacket);
 			//Get the response from the server
 			DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);

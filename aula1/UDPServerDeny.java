@@ -2,8 +2,11 @@
 import java.net.*;
 import java.util.ArrayList;
 
-class UDPServer {
+class UDPServerDeny {
 	public static void main(String args[]) throws Exception {
+		// BlackList
+		ArrayList<InetAddress> blackList = new ArrayList<>();
+		blackList.add(InetAddress.getByName("localhost"));
 		//Create server socket
 		DatagramSocket serverSocket = new DatagramSocket(9876);
 
@@ -16,13 +19,21 @@ class UDPServer {
 			//Get the information about the datagram of the client
 			InetAddress IPAddress = receivedPacket.getAddress();
 			int port = receivedPacket.getPort();
-			//Get the data of the packet
-			String sentence = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
-			System.out.println("RECEIVED FROM CLIENT "+IPAddress.getHostAddress()+": " + sentence);
-			//Change the data to capital letters
-			String capitalizedSentence = sentence.toUpperCase();
-			sendData = new byte[sentence.length()];
-			sendData = capitalizedSentence.getBytes();
+			if (!blackList.contains(IPAddress)) {
+				//Get the data of the packet
+				String sentence = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
+				System.out.println("RECEIVED FROM CLIENT "+IPAddress.getHostAddress()+": " + sentence);
+				//Change the data to capital letters
+				String capitalizedSentence = sentence.toUpperCase();
+				sendData = new byte[sentence.length()];
+				sendData = capitalizedSentence.getBytes();
+			}
+			else {
+				String denied = "CONNECTION DENIED";
+				System.out.println("CLIENT DENIED: "+IPAddress.getHostAddress());
+				sendData = new byte[denied.length()];
+				sendData = denied.getBytes();
+			}
 			//Send back the response to the client
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
 			serverSocket.send(sendPacket);
