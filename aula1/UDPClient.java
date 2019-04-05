@@ -8,7 +8,6 @@ class UDPClient {
 		InetAddress IPAddress = InetAddress.getByName("localhost");
 
 		boolean p = true;
-
 		while (p) {
 			//Read a sentence from the console
 			BufferedReader inFromUser =	new BufferedReader(new InputStreamReader(System.in));
@@ -16,11 +15,10 @@ class UDPClient {
 			//Allocate buffers
 			byte[] sendData = new byte[sentence.length()];
 			byte[] receiveData = new byte[sentence.length()];
-			if (sentence.equals("EOF")) p = false;
 			//Get the bytes of the sentence
 			sendData = sentence.getBytes();
 			//Send packet to the server
-			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9877);
+			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
 			clientSocket.send(sendPacket);
 			//Get the response from the server
 			DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
