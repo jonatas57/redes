@@ -1,7 +1,5 @@
 //
-//  TCPServer.java
-//
-//  Kurose & Ross
+//  Servidor que permite a conexão de vários clientes
 //
 import java.io.*;
 import java.net.*;
@@ -11,6 +9,9 @@ class TCPServerMultCli {
 
 
   public static void main (String args[]) throws Exception {
+    // throws Exception here because don't want to deal
+    // with errors in the rest of the code for simplicity.
+    // (Note: NOT a good practice).
     class MyThread implements Runnable {
       Socket s;
       MyThread(Socket sock) {
@@ -42,9 +43,6 @@ class TCPServerMultCli {
         }
       }
     }
-    // throws Exception here because don't want to deal
-    // with errors in the rest of the code for simplicity.
-    // (Note: NOT a good practice).
 
     //Welcome socket  ---- SOCKET 1
     ServerSocket serverSocket = new ServerSocket(9000);

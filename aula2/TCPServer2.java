@@ -1,5 +1,5 @@
 //
-//  TCPServer.java
+//  Servidor que desfaz a conexão quando recebe o comando "tchau"
 //
 //  Kurose & Ross
 //

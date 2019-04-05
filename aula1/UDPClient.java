@@ -1,3 +1,4 @@
+// Cliente que pode enviar várias mensagens
 import java.io.*;
 import java.net.*;
 

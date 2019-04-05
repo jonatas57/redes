@@ -1,4 +1,6 @@
 // created on 29/09/2010 at 22:33
+
+// Servidor com black list
 import java.net.*;
 import java.util.ArrayList;
 

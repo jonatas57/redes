@@ -1,6 +1,5 @@
 //
-//  TCPClient.java
-//  Kurose & Ross
+//  Cliente que desfaz a conexão enviando o comando "tchau"
 //
 
 import java.io.*;
